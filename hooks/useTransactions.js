@@ -79,6 +79,7 @@ export const useTransactions = (userId) => {
 
           // Update summary after adding
           await fetchSummary();
+          await fetchTransactions()
 
           Alert.alert("Success", "Transaction created successfully");
          
@@ -92,7 +93,7 @@ export const useTransactions = (userId) => {
         setLoading(false);
       }
     },
-    [userId, fetchSummary]
+    [userId, fetchSummary, fetchTransactions]
   );
 
   // --------------------------------------------------

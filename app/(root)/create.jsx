@@ -1,7 +1,7 @@
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { useRouter } from 'expo-router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { COLORS } from '../../constants/colors'
 import { useUser } from '@clerk/clerk-expo'
 import { useTransactions } from '../../hooks/useTransactions'
@@ -46,10 +46,12 @@ export default function Create() {
     const result = await createTransaction(payload)
 
     if (result) {
-      router.back()
+      router.push('/')
+      
     }
   }
 
+ 
   return (
     <View style={styles.container}>
       

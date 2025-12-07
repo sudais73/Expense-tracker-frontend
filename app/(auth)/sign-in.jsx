@@ -3,6 +3,7 @@ import {
   Image,
   KeyboardAvoidingView,
   Platform,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -47,12 +48,15 @@ export default function SignInScreen() {
   };
 
   return (
-    <KeyboardAvoidingView
-      behavior="padding"
-      keyboardVerticalOffset={Platform.OS === "ios" ? 64 : 0}
-      style={{ flex: 1 }}
-      extraHeight={100}
-    >
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 64 : 0}
+        style={{ flex: 1 }}
+      >
+        <ScrollView
+          contentContainerStyle={{ flexGrow: 1 }}
+          keyboardShouldPersistTaps="handled"
+        >
       <View style={styles.container}>
         <Image
           source={require("../../assets/images/revenue-i4.png")}
@@ -92,6 +96,7 @@ export default function SignInScreen() {
           </Link>
         </View>
       </View>
+      </ScrollView>
     </KeyboardAvoidingView>
   );
 }
